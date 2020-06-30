@@ -17,6 +17,27 @@ import org.junit.rules.ExpectedException;
 
 public class EvaluationServiceTest {
 
+	public static void main(String[] args) {
+		EvaluationServiceTest evaluationServiceTest = new EvaluationServiceTest();
+		evaluationServiceTest.testSpeedConverter1();
+		evaluationServiceTest.testSpeedConverter2();
+		evaluationServiceTest.testSpeedConverterInvalid();
+		evaluationServiceTest.testPrintConversion1();
+		evaluationServiceTest.testPrintConversion2();
+		evaluationServiceTest.testPrintConversionInvalid();
+		evaluationServiceTest.testPrintMegaBytesAndKiloBytes1();
+		evaluationServiceTest.testPrintMegaBytesAndKiloBytes2();
+		evaluationServiceTest.testPrintMegaBytesAndKiloBytesInvalid();
+		evaluationServiceTest.testBarkingDog1();
+		evaluationServiceTest.testBarkingDog2();
+		evaluationServiceTest.testBarkingDogInvalid();
+		evaluationServiceTest.testDecimalComparator1();
+		evaluationServiceTest.testDecimalComparator2();
+		evaluationServiceTest.testDecimalComparator3();
+
+
+	}
+	
 	private static final EvaluationService evaluationService = new EvaluationService();
 
 	@Rule

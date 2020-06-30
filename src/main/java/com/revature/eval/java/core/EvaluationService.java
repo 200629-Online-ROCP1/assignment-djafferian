@@ -20,11 +20,12 @@ public class EvaluationService {
 	 */
 	static class SpeedConverter {
 
+		private static double kilometersToMiles = 0.62137119223733d;
 		public static long toMilesPerHour(double kilometersPerHour) {
 			// TODO Write an implementation for this method declaration
-			return 0;
+			if (kilometersPerHour < 0) return -1L;
+			return Math.round(kilometersPerHour * kilometersToMiles);
 		}
-
 		/**
 		 * 1.B Speed Converter - Print Conversion
 		 * 
@@ -42,7 +43,11 @@ public class EvaluationService {
 		 */
 		public static String printConversion(double kilometersPerHour) {
 			// TODO Write an implementation for this method declaration
-			return null;
+			long milesPerHour = toMilesPerHour(kilometersPerHour);
+			if (milesPerHour == -1L) {
+				return "Invalid Value";
+			}
+			return kilometersPerHour + " km/h = " + milesPerHour + " mi/h";
 		}
 	}
 
@@ -66,9 +71,14 @@ public class EvaluationService {
 	 * If the parameter kiloBytes is less than 0 then print the text "Invalid
 	 * Value".
 	 */
-	public String printMegaBytesAndKiloBytes(int XX) {
+	private static int oneKiloByte = 1024;
+	private static int oneMegaByte = 1024*1024;
+	private static int kiloBytesPerMegaByte = oneMegaByte/oneKiloByte;
+	public String printMegaBytesAndKiloBytes(int kiloBytes) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		if (kiloBytes < 0) return "Invalid Value";
+		return kiloBytes + " KB = " + kiloBytes / kiloBytesPerMegaByte +
+				" MB and " + kiloBytes % kiloBytesPerMegaByte + " KB";
 	}
 
 	/**
@@ -92,7 +102,9 @@ public class EvaluationService {
 	 */
 	public boolean shouldWakeUp(boolean isBarking, int hourOfDay) {
 		// TODO Write an implementation for this method declaration
-		return false;
+		return isBarking								// Dog is barking
+				&& 0 <= hourOfDay && hourOfDay <= 23	// hourOfDay is valid
+				&& (hourOfDay < 8 || 22 < hourOfDay);	// at night
 	}
 
 	/**
@@ -108,7 +120,9 @@ public class EvaluationService {
 	 */
 	public boolean areEqualByThreeDecimalPlaces(double firstNum, double secondNum) {
 		// TODO Write an implementation for this method declaration
-		return false;
+		System.err.println(String.format("%.4e", firstNum));
+		System.err.println(String.format("%.4e", secondNum));
+		return String.format("%.3e", firstNum) == String.format("%.3e", secondNum);
 	}
 
 	/**
