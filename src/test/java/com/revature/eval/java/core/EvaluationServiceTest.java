@@ -34,7 +34,29 @@ public class EvaluationServiceTest {
 		evaluationServiceTest.testDecimalComparator1();
 		evaluationServiceTest.testDecimalComparator2();
 		evaluationServiceTest.testDecimalComparator3();
-
+		evaluationServiceTest.testTeenNumberChecker1();
+		evaluationServiceTest.testTeenNumberChecker2();
+		evaluationServiceTest.testTeenNumberChecker3();
+		evaluationServiceTest.testMinutesToDaysAndYears1();
+		evaluationServiceTest.testMinutesToDaysAndYears2();
+		evaluationServiceTest.testMinutesToDaysAndYears3();
+		evaluationServiceTest.testNumberInWord1();
+		evaluationServiceTest.testNumberInWord2();
+		evaluationServiceTest.testGreatestCommonDivisor1();
+		evaluationServiceTest.testGreatestCommonDivisor2();
+		evaluationServiceTest.testGreatestCommonDivisor3();
+		evaluationServiceTest.testFirstAndLastDigit1();
+		evaluationServiceTest.testFirstAndLastDigit2();
+		evaluationServiceTest.testFirstAndLastDigit3();
+		evaluationServiceTest.testFirstAndLastDigitInvalid();
+		evaluationServiceTest.testAnEmptyString();
+		evaluationServiceTest.testAWord();
+		evaluationServiceTest.testACapitalizedWord();
+		evaluationServiceTest.testASentenceWithPunctuation();
+		evaluationServiceTest.basic();
+		evaluationServiceTest.punctuation();
+		evaluationServiceTest.NonAcronymAllCapsWord();
+		evaluationServiceTest.punctuationWithoutWhitespace();
 
 	}
 	

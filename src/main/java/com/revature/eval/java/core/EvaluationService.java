@@ -20,7 +20,7 @@ public class EvaluationService {
 	 */
 	static class SpeedConverter {
 
-		private static double kilometersToMiles = 0.62137119223733d;
+		private static final double kilometersToMiles = 0.62137119223733d;
 		public static long toMilesPerHour(double kilometersPerHour) {
 			// TODO Write an implementation for this method declaration
 			if (kilometersPerHour < 0) return -1L;
@@ -71,9 +71,9 @@ public class EvaluationService {
 	 * If the parameter kiloBytes is less than 0 then print the text "Invalid
 	 * Value".
 	 */
-	private static int oneKiloByte = 1024;
-	private static int oneMegaByte = 1024*1024;
-	private static int kiloBytesPerMegaByte = oneMegaByte/oneKiloByte;
+	private static final int oneKiloByte = 1024;
+	private static final int oneMegaByte = 1024*1024;
+	private static final int kiloBytesPerMegaByte = oneMegaByte/oneKiloByte;
 	public String printMegaBytesAndKiloBytes(int kiloBytes) {
 		// TODO Write an implementation for this method declaration
 		if (kiloBytes < 0) return "Invalid Value";
@@ -120,9 +120,11 @@ public class EvaluationService {
 	 */
 	public boolean areEqualByThreeDecimalPlaces(double firstNum, double secondNum) {
 		// TODO Write an implementation for this method declaration
-		System.err.println(String.format("%.4e", firstNum));
-		System.err.println(String.format("%.4e", secondNum));
-		return String.format("%.3e", firstNum) == String.format("%.3e", secondNum);
+		String a = String.format("%+.4e", firstNum);
+		String b = String.format("%+.4e", secondNum);
+		a = a.substring(0,6) + a.substring(7);
+		b = b.substring(0,6) + b.substring(7);
+		return a.compareTo(b) == 0;
 	}
 
 	/**
@@ -139,7 +141,7 @@ public class EvaluationService {
 
 		public static boolean hasTeen(int x, int y, int z) {
 			// TODO Write an implementation for this method declaration
-			return false;
+			return isTeen(x) || isTeen(y) || isTeen(z);
 		}
 
 		// We can initialize isTeen method first
@@ -147,7 +149,7 @@ public class EvaluationService {
 
 		public static boolean isTeen(int number) {
 			// TODO Write an implementation for this method declaration
-			return false;
+			return 13 <= number && number <= 19;
 		}
 	}
 
@@ -166,9 +168,13 @@ public class EvaluationService {
 	 * XX represents the original value minutes. YY represents the calculated years.
 	 * ZZ represents the calculated days.
 	 */
+	private static final long minutesPerDay = 1440L;
+	private static final long minutesPerYear = 525600L;
 	public String printYearsAndDays(long minutes) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		if (minutes < 0) return "Invalid Value";
+		return minutes+" min = "+(long)Math.floor(minutes/minutesPerYear)+
+				" y and "+(minutes%minutesPerYear)/minutesPerDay+" d";
 	}
 
 	/**
@@ -180,9 +186,13 @@ public class EvaluationService {
 	 * for any other number including negative numbers. You can use if-else
 	 * statement or switch statement whatever is easier for you.
 	 */
+	private static final String[] decimalDigits = {
+			"ZERO","ONE","TWO","THREE","FOUR",
+			"FIVE","SIX","SEVEN","EIGHT","NINE"};
 	public String printNumberInWord(int number) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		if (number < 0 || 9 < number) return "OTHER";
+		return decimalDigits[number];
 	}
 
 	/**
@@ -206,7 +216,10 @@ public class EvaluationService {
 	 */
 	public int getGreatestCommonDivisor(int first, int second) {
 		// TODO Write an implementation for this method declaration
-		return 0;
+		if (first < 10 || second < 10) return -1;
+		int lcd = first < second ? first : second;
+		while (first%lcd != 0 || second%lcd != 0) lcd-=1;
+		return lcd;
 	}
 
 	/**
@@ -224,7 +237,13 @@ public class EvaluationService {
 	 */
 	public int sumFirstAndLastDigit(int num) {
 		// TODO Write an implementation for this method declaration
-		return 0;
+		if (num < 0) return -1;
+		int powerOfTen = 10;
+		int lastDigit = num % 10;
+		while (0 < num/powerOfTen) powerOfTen *= 10;
+		powerOfTen /= 10;
+		int firstDigit = num/powerOfTen;
+		return firstDigit+lastDigit;
 	}
 
 	/**
@@ -235,7 +254,10 @@ public class EvaluationService {
 	 */
 	public String reverse(String string) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		int length = string.length();
+		char[] s = new char[length];
+		for (int i=0; i<length; i+=1) s[i] = string.charAt(length-i-1);
+		return new String(s);
 	}
 
 	/**
@@ -247,7 +269,12 @@ public class EvaluationService {
 	 */
 	public String acronym(String phrase) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		String[] a = phrase.split("\\s+");
+		int length = a.length;
+		char[] acronym = new char[length];
+		int j=0;
+		for (int i=0;i<length;i+=1) acronym[j] = a[i].charAt(0);
+		return new String(acronym);
 	}
 
 	/**
