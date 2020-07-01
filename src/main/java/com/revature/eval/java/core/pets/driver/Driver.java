@@ -7,6 +7,7 @@ public class Driver {
 	public static void main (String[] args) {
 		Cat cat = new Cat("Tiger", "Orange", 4, 13, 0);
 		if (cat.lookInFoodBowl() == 0) cat.fillFoodBowl();
+		System.out.println(cat.lookInFoodBowl());
 		cat.Eat(cat.lookInFoodBowl());
 	}
 }
