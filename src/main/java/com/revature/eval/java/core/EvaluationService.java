@@ -256,7 +256,10 @@ public class EvaluationService {
 		// TODO Write an implementation for this method declaration
 		int length = string.length();
 		char[] s = new char[length];
-		for (int i=0; i<length; i+=1) s[i] = string.charAt(length-i-1);
+		for (int i=0, j=length; i<length; i+=1) {
+			j-=1;
+			s[i] = string.charAt(j);
+		}
 		return new String(s);
 	}
 
@@ -269,12 +272,11 @@ public class EvaluationService {
 	 */
 	public String acronym(String phrase) {
 		// TODO Write an implementation for this method declaration
-		String[] a = phrase.split("\\s+");
+		String[] a = phrase.split("-+|\\s+");
 		int length = a.length;
 		char[] acronym = new char[length];
-		int j=0;
-		for (int i=0;i<length;i+=1) acronym[j] = a[i].charAt(0);
-		return new String(acronym);
+		for (int i=0;i<length;i+=1) acronym[i] = a[i].charAt(0);
+		return new String(acronym).toUpperCase();
 	}
 
 	/**
@@ -330,17 +332,17 @@ public class EvaluationService {
 
 		public boolean isEquilateral() {
 			// TODO Write an implementation for this method declaration
-			return false;
+			return sideOne == sideTwo && sideTwo == sideThree;
 		}
 
 		public boolean isIsosceles() {
 			// TODO Write an implementation for this method declaration
-			return false;
+			return sideOne == sideTwo || sideTwo == sideThree || sideThree == sideOne;
 		}
 
 		public boolean isScalene() {
 			// TODO Write an implementation for this method declaration
-			return false;
+			return !isIsosceles();
 		}
 
 	}

@@ -57,6 +57,18 @@ public class EvaluationServiceTest {
 		evaluationServiceTest.punctuation();
 		evaluationServiceTest.NonAcronymAllCapsWord();
 		evaluationServiceTest.punctuationWithoutWhitespace();
+		evaluationServiceTest.trianglesWithNoEqualSidesAreNotEquilateral();
+		evaluationServiceTest.verySmallTrianglesCanBeEquilateral();
+		evaluationServiceTest.isoscelesTrianglesMustHaveAtLeastTwoEqualSides();
+		evaluationServiceTest.verySmallTrianglesCanBeIsosceles();
+		evaluationServiceTest.trianglesWithAllSidesEqualAreNotScalene();
+		evaluationServiceTest.verySmallTrianglesCanBeScalene();
+		evaluationServiceTest.testAValuableLetter();
+		evaluationServiceTest.testAShortValuableWord();
+		evaluationServiceTest.testAMediumWord();
+		evaluationServiceTest.testAMediumValuableWord();
+		evaluationServiceTest.testALongMixCaseWord();
+
 
 	}
 	
