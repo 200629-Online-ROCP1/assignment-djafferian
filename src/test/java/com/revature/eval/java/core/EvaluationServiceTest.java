@@ -68,6 +68,16 @@ public class EvaluationServiceTest {
 		evaluationServiceTest.testAMediumWord();
 		evaluationServiceTest.testAMediumValuableWord();
 		evaluationServiceTest.testALongMixCaseWord();
+		evaluationServiceTest.testAValuableLetter();
+		evaluationServiceTest.testAShortValuableWord();
+		evaluationServiceTest.testAMediumWord();
+		evaluationServiceTest.testAMediumValuableWord();
+		evaluationServiceTest.testALongMixCaseWord();
+		evaluationServiceTest.cleansTheNumber();
+		evaluationServiceTest.cleansNumbersWithDots();
+		evaluationServiceTest.cleansNumbersWithMultipleSpaces();
+		evaluationServiceTest.invalidWhenMoreThan11Digits();
+		evaluationServiceTest.invalidWithNonNumeric();
 
 
 	}

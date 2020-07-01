@@ -363,7 +363,15 @@ public class EvaluationService {
 	 */
 	public int getScrabbleScore(String string) {
 		// TODO Write an implementation for this method declaration
-		return 0;
+		final int[] scores = {1,3,3,2,1,4,2,4,1,8,5,1,3,1,1,3,10,1,1,1,1,4,4,8,4,10};
+		String s = string.toUpperCase();
+		int length = s.length(), score = 0;
+		for (int i=0;i<length;i+=1) {
+			char c = s.charAt(i);
+			if (c < 'A' | 'Z' < c) return -1;
+			score += scores[c - 'A'];
+		}
+		return score;
 	}
 
 	/**
@@ -400,7 +408,15 @@ public class EvaluationService {
 	 * NANP-countries, only 1 is considered a valid country code.
 	 */
 	public String cleanPhoneNumber(String string) {
-		return null;
+		final String lowestAtJ = "2002000000";
+		char[] NAMP = new char[10];
+		int j=0;
+		for (int i=0; i<string.length() && j<10; i+=1) {
+			char c = string.charAt(i);
+			if (lowestAtJ.charAt(j)<=c && c<='9') { NAMP[j] = c; j+=1; }
+		}
+		if (j<10) return null;
+		return new String(NAMP);
 	}
 
 	/**
