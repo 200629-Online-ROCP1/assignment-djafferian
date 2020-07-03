@@ -78,8 +78,39 @@ public class EvaluationServiceTest {
 		evaluationServiceTest.cleansNumbersWithMultipleSpaces();
 		evaluationServiceTest.invalidWhenMoreThan11Digits();
 		evaluationServiceTest.invalidWithNonNumeric();
-
-
+		evaluationServiceTest.countOneWord();
+		evaluationServiceTest.countOneOfEachWord();
+		evaluationServiceTest.multipleOccurrencesOfAWord();
+		evaluationServiceTest.handlesCrampedLists();
+		evaluationServiceTest.handlesExpandedLists();
+		evaluationServiceTest.singleDigitsAreArmstrongNumbers();
+		evaluationServiceTest.noTwoDigitArmstrongNumbers();
+		evaluationServiceTest.threeDigitNumberIsArmstrongNumber();
+		evaluationServiceTest.threeDigitNumberIsNotArmstrongNumber();
+		evaluationServiceTest.fourDigitNumberIsArmstrongNumber();
+		evaluationServiceTest.testPrimeNumber();
+		evaluationServiceTest.testSquareOfAPrime();
+		evaluationServiceTest.testCubeOfAPrime();
+		evaluationServiceTest.testProductOfPrimesAndNonPrimes();
+		evaluationServiceTest.testProductOfPrimes();
+		evaluationServiceTest.testFirstPrime();
+		evaluationServiceTest.testSecondPrime();
+		evaluationServiceTest.testSixthPrime();
+		evaluationServiceTest.testBigPrime();
+		evaluationServiceTest.testUndefinedPrime();
+		evaluationServiceTest.emptySentenceIsNotPangram();
+		evaluationServiceTest.recognizesPerfectLowerCasePangram();
+		evaluationServiceTest.pangramWithOnlyLowerCaseLettersIsRecognizedAsPangram();
+		evaluationServiceTest.phraseMissingCharacterXIsNotPangram();
+		evaluationServiceTest.phraseMissingAnotherCharacterIsNotPangram();
+		evaluationServiceTest.testSumOfMultiplesOf4and6UpToFifteen();
+		evaluationServiceTest.testSumOfMultiplesOf5and6and8UpToOneHundredFifty();
+		evaluationServiceTest.testSumOfMultiplesOf5and25UpToFiftyOne();
+		evaluationServiceTest.testSumOfMultiplesOf43and47UpToTenThousand();
+		evaluationServiceTest.testSumOfMultiplesOfOneUpToOneHundred();
+		evaluationServiceTest.testThreeLuckyNumbers();
+		evaluationServiceTest.testGuessingGame();
+		System.out.println("Test finished.");
 	}
 	
 	private static final EvaluationService evaluationService = new EvaluationService();

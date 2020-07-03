@@ -1,7 +1,12 @@
 package com.revature.eval.java.core;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+import java.util.Vector;
 
 public class EvaluationService {
 
@@ -429,7 +434,14 @@ public class EvaluationService {
 	 */
 	public Map<String, Integer> wordCount(String string) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		String[] words = string.split("(,|\\s)+");
+		for (int i=0; i<words.length; i+=1) {
+			Integer count = map.get(words[i]);
+			if (count == null) count = 0;
+			map.put(words[i], count+1);
+		}
+		return map;
 	}
 
 	/**
@@ -447,7 +459,11 @@ public class EvaluationService {
 	 * a number is an Armstrong number.
 	 */
 	public boolean isArmstrongNumber(int input) {
-		return false;
+		if (input<0) return false;
+		int power=0, sum=0;
+		for (int x=input; 0<x; x/=10) power+=1;
+		for (int x=input; 0<x; x/=10) sum+=Math.pow(x%10,power);
+		return input == sum;
 	}
 
 	/**
@@ -458,9 +474,31 @@ public class EvaluationService {
 	 * 
 	 * Note that 1 is not a prime number.
 	 */
+	private static List<Long> twoThree = (List<Long>)Arrays.asList(2L,3L);
+	private static Vector<Long> primes = new Vector<Long>(twoThree);
+	private static void pushNextPrime() {
+		long p=primes.lastElement().longValue();
+		int i=primes.size(), j;
+		do {
+			p+=2L;
+			for (j=0; j<i && p%primes.get(j).longValue() != 0; j+=1);
+		} while (j!=i);
+		primes.add(Long.valueOf(p));
+	}
 	public List<Long> calculatePrimeFactorsOf(long l) {
 		// TODO Write an implementation for this method declaration
-		return null;
+		if (l<=1) return null;
+		// Find the prime factors that are known, starting at 2 and increasing.
+		ArrayList<Long> primeFactors = new ArrayList<Long>();
+		for (int i=0; 1<l; i+=1) {
+			long p;
+			for (p=primes.get(i).longValue(); 1<l && l%p == 0L; l/=p) {
+				primeFactors.add(primes.get(i));
+			}
+			// If the last known prime has been reached, find the next prime.
+			if (1<l && i+1 == primes.size()) pushNextPrime();
+		}
+		return primeFactors;
 	}
 
 	/**
@@ -476,7 +514,17 @@ public class EvaluationService {
 	 */
 	public int calculateNthPrime(int k) {
 		// TODO Write an implementation for this method declaration
-		return 0;
+		//if (k<1) return 0;
+		for (int i=primes.size(); i<k; i+=1) pushNextPrime();
+		try {
+			return (int)primes.get(k-1).longValue();
+		} catch(IndexOutOfBoundsException ioobe) {
+			try {
+				throw new IllegalArgumentException();
+			} catch(IllegalArgumentException iae) {
+				return 0;
+			}
+		}
 	}
 
 	/**
@@ -493,7 +541,14 @@ public class EvaluationService {
 	 */
 	public boolean isPangram(String string) {
 		// TODO Write an implementation for this method declaration
-		return false;
+		char[] counts = new char['z'-'a'+1];
+		string = string.toLowerCase();
+		for (int i=0; i<string.length(); i+=1) {
+			char c=string.charAt(i);
+			if ('a'<=c && c<='z') counts[c-'a']+=1;
+		}
+		for (int i=0; i<counts.length; i+=1) if (counts[i] == 0) return false;
+		return true;
 	}
 
 	/**
@@ -508,7 +563,13 @@ public class EvaluationService {
 	 * The sum of these multiples is 78.
 	 */
 	public int getSumOfMultiples(int i, int[] set) {
-		return 0;
+		int sum = 0;
+		for (int j=0; j<i; j+=1) {
+			int k=0;
+			while (k<set.length && j%set[k] != 0) k+=1;
+			if (k<set.length) sum+=j;
+		}
+		return sum;
 	}
 	
 	/**
@@ -522,7 +583,7 @@ public class EvaluationService {
 	 */
 	
 	public int[] threeLuckyNumbers() {
-		return null;
+		return new Random().ints(3,1,101).toArray();
 	}
 	
 	/*
@@ -536,6 +597,6 @@ public class EvaluationService {
 	 */
 	
 	public int guessingGame(int x, int y) {
-		return 0;
+		return new Random().ints(1,x,y+1).sum();
 	}
 }
