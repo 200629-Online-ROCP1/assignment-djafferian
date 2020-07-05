@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.Random;
 import java.util.Vector;
 
@@ -432,6 +434,7 @@ public class EvaluationService {
 	 * For example for the input "olly olly in come free" olly: 2 in: 1 come: 1
 	 * free: 1
 	 */
+/*
 	public Map<String, Integer> wordCount(String string) {
 		// TODO Write an implementation for this method declaration
 		Map<String, Integer> map = new HashMap<String, Integer>();
@@ -443,7 +446,21 @@ public class EvaluationService {
 		}
 		return map;
 	}
-
+*/
+	public Map<String, Integer> wordCount(String string) {
+		// TODO Write an implementation for this method declaration
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		Pattern p = Pattern.compile("\\w+");
+		Matcher m = p.matcher(string);
+		while (m.find()) {
+			String key = m.group(0);
+			Integer count = map.get(key);
+			if (count == null) count = 0;
+			map.put(key, count+1);
+		}
+		return map;
+	}
+	
 	/**
 	 * 16. Armstrong Number
 	 * 
